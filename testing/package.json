@@ -15,7 +15,7 @@
 	},
 	"libraries": {
 		"imports": [
-			"@bgroup/http-suite"
+			"@aimpact/http-suite"
 		]
 	},
 	"modules": {

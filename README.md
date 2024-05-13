@@ -1,16 +1,16 @@
-# README.md for @bgroup/http-suite
+# README.md for @aimpact/http-suite
 
 ## Introduction
 
-`@bgroup/http-suite` is a comprehensive JavaScript package designed to simplify interactions with APIs. The core of this package
-is the `Api` object, which provides an easy-to-use interface for making HTTP requests to an API.
+`@aimpact/http-suite` is a comprehensive JavaScript package designed to simplify interactions with APIs. The core of
+this package is the `Api` object, which provides an easy-to-use interface for making HTTP requests to an API.
 
 ## Installation
 
-To install `@bgroup/http-suite`, run the following command in your project directory:
+To install `@aimpact/http-suite`, run the following command in your project directory:
 
 ```bash
-npm install @bgroup/http-suite
+npm install @aimpact/http-suite
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ npm install @bgroup/http-suite
 Start by importing the `Api` class and creating an instance:
 
 ```javascript
-import { Api } from '@bgroup/http-suite/api';
+import { Api } from '@aimpact/http-suite/api';
 
 const baseUrl = 'https://your-api-url.com';
 const api = new Api(baseUrl);

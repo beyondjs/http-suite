@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Api } from '@bgroup/http-suite/api';
+import { Api } from '@aimpact/http-suite/api';
 
 export /*bundle*/
-	function View(): JSX.Element {
+function View(): JSX.Element {
 	return (
 		<div className='page__container'>
 			<h1>
