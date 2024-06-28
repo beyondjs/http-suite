@@ -24,6 +24,17 @@
 				"ports": {
 					"bundles": 5530
 				}
+			},
+			{
+				"name": "web-tsc",
+				"platform": "web",
+				"environment": "development",
+				"ts": {
+					"compiler": "tsc"
+				},
+				"ports": {
+					"bundles": 1100
+				}
 			}
 		]
 	},

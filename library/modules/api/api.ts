@@ -1,12 +1,13 @@
+import { Fetcher } from './fetcher';
 import { Events } from '@beyond-js/kernel/core';
-import { JCall } from './jcall';
+
 export /*bundle*/
 class Api extends Events {
 	#url;
 	get url() {
 		return this.#url ?? '';
 	}
-	#fetcher: JCall;
+	#fetcher: Fetcher;
 
 	get actions() {
 		return this.#fetcher.actions;
@@ -21,7 +22,7 @@ class Api extends Events {
 	constructor(url) {
 		super();
 		this.#url = url;
-		this.#fetcher = new JCall();
+		this.#fetcher = new Fetcher();
 		this.#fetcher.on('action.received', () => this.trigger('action.received'));
 		this.#fetcher.on('stream.response', this.#getResponse);
 	}

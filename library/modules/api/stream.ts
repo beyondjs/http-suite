@@ -1,4 +1,5 @@
 import { PendingPromise } from '@beyond-js/kernel/core';
+import { IResponse } from './types';
 
 type Metadata = { value: object | undefined; error?: string } | undefined;
 type StreamData = { started: boolean; value: string; parsed: Metadata };
@@ -87,7 +88,7 @@ export class Stream {
 		return splitted[1];
 	}
 
-	async #read(response, promise) {
+	async #read<T>(response, promise) {
 		// create the stream reader
 		const reader = response.body?.getReader();
 		while (true) {
@@ -121,9 +122,9 @@ export class Stream {
 		}
 	}
 
-	async execute(url, specs) {
+	async execute<T>(url, specs): Promise<IResponse<T>> {
 		try {
-			const promise = new PendingPromise();
+			const promise = new PendingPromise<IResponse<T>>();
 			this.#response = '';
 			const response: Response = await fetch(url, specs);
 
