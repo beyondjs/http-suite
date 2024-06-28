@@ -1,3 +1,20 @@
+## [1.1.0] - 2024-06-28
+
+### Added
+
+-   New `setHeaders` method in the `Fetcher` class to manage headers independently.
+-   Improved type definitions across the codebase.
+-   Added `IResponse` interface for handling API responses.
+
+### Changed
+
+-   Renamed `JCall` class to `Fetcher` for better clarity and naming consistency.
+-   Refactored internal methods to use the new header management functionality.
+
+### Fixed
+
+-   General types fixes and improvements to ensure better type safety and error handling.
+
 ### 1.0.3
 
 -   Fix bug returning data in delete method.

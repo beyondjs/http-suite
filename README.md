@@ -1,4 +1,4 @@
-# README.md for @aimpact/http-suite
+#  @aimpact/http-suite
 
 ## Introduction
 
