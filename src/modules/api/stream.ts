@@ -28,6 +28,7 @@ export class Stream {
 		return this.#response;
 	}
 
+	#executingPromise: PendingPromise<IResponse<any>> | undefined;
 	#parent;
 	#currentTool = { started: false, value: '', parsed: { value: void 0 } };
 	constructor(parent) {
@@ -36,7 +37,6 @@ export class Stream {
 
 	#processResponse = promise => {
 		const metadata = this.#metadata;
-
 		try {
 			this.#metadata.parsed.value = JSON.parse(metadata.value);
 		} catch (exc) {
@@ -49,7 +49,13 @@ export class Stream {
 			value: this.#response,
 			...metadata.parsed.value,
 		});
+		this.#metadata = {
+			started: false,
+			value: '',
+			parsed: { value: void 0 },
+		};
 		this.#response = undefined;
+		this.#executingPromise = undefined;
 	};
 
 	#cleanCurrentTool() {
@@ -90,6 +96,7 @@ export class Stream {
 
 	async #read<T>(response, promise) {
 		// create the stream reader
+
 		const reader = response.body?.getReader();
 		while (true) {
 			const { done, value } = await reader.read();
@@ -117,6 +124,7 @@ export class Stream {
 			}
 
 			this.#response += chunk;
+			// console.log(44, this.#response);
 			this.#parent.triggerEvent('action.received');
 			this.#parent.triggerEvent('stream.response');
 		}
@@ -124,7 +132,7 @@ export class Stream {
 
 	async execute<T>(url, specs): Promise<IResponse<T>> {
 		try {
-			const promise = new PendingPromise<IResponse<T>>();
+			this.#executingPromise = new PendingPromise<IResponse<T>>();
 			this.#response = '';
 			const response: Response = await fetch(url, specs);
 
@@ -132,8 +140,8 @@ export class Stream {
 				throw new Error('error in stream');
 			}
 
-			this.#read(response, promise);
-			return promise;
+			this.#read(response, this.#executingPromise);
+			return this.#executingPromise;
 		} catch (e) {
 			console.error(e);
 		}

@@ -107,14 +107,14 @@ export class Fetcher extends ReactiveModel<Fetcher> {
 		delete params.bearer;
 
 		const specs: RequestInit = { method, headers, mode: 'cors' };
-
+		console.log(18.5);
 		if (['post', 'put', 'DELETE'].includes(method)) {
 			specs.body = this.processParams(params, multipart, method);
 		} else if (method === 'get') {
 			const queryString = this.processParams(params, multipart, method);
 			if (queryString) url += `?${queryString}`;
 		}
-
+		console.log(19.2);
 		if (stream) return this.streamer.execute(url, specs);
 
 		const response = await fetch(url, specs);
@@ -122,6 +122,7 @@ export class Fetcher extends ReactiveModel<Fetcher> {
 	}
 
 	stream<T = any>(url: string, params: Record<string, any> = {}) {
+		console.log(18);
 		return this.execute<T>(url, 'post', params, true);
 	}
 
