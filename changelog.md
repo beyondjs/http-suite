@@ -1,3 +1,17 @@
+## [1.2.0] - 2024-07-04
+
+The next changes enhance the stream response processing and execution flow, ensuring proper cleanup and state
+management.
+
+### Added
+
+-   `#executingPromise` property to track execution state within the `Stream` class.
+
+### Changed
+
+-   Refactored `#processResponse` method to reset metadata, response, and executingPromise properties after processing.
+-   Updated `execute` method to instantiate and use `#executingPromise`.
+
 ## [1.1.0] - 2024-06-28
 
 ### Added
