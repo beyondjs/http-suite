@@ -58,7 +58,7 @@ export class Stream {
 			this.#metadata.parsed.error = 'Error parsing metadata';
 		}
 
-		promise.resolve({
+		promise?.resolve({
 			value: this.#response,
 			...metadata.parsed.value,
 		});
@@ -130,7 +130,7 @@ export class Stream {
 			if (this.#metadata.started) {
 				this.#metadata.value += chunk;
 				this.#parent.trigger('stream.response');
-				return;
+				continue;
 			}
 
 			if (chunk.includes(this.#SEPARATORS.START)) {
@@ -150,19 +150,15 @@ export class Stream {
 	}
 
 	async execute<T>(url, specs): Promise<IResponse<T>> {
-		try {
-			this.#executingPromise = new PendingPromise<IResponse<T>>();
-			this.#response = '';
-			const response: Response = await fetch(url, specs);
+		this.#executingPromise = new PendingPromise<IResponse<T>>();
+		this.#response = '';
+		const response: Response = await fetch(url, specs);
 
-			if (!response.ok) {
-				throw new Error('error in stream');
-			}
-
-			this.#read(response, this.#executingPromise);
-			return this.#executingPromise;
-		} catch (e) {
-			console.error(e);
+		if (!response.ok) {
+			throw new Error('error in stream');
 		}
+
+		this.#read(response, this.#executingPromise);
+		return this.#executingPromise;
 	}
 }
