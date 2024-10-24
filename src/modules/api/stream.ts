@@ -35,6 +35,19 @@ export class Stream {
 		this.#parent = parent;
 	}
 
+	get stringContent() {
+		const { START, END } = this.#SEPARATORS;
+
+		if (!this.#response) return;
+		// Expresión regular para encontrar el contenido entre START y END
+		const regex = new RegExp(`${START}.*?${END}`, 'gs');
+
+		// Remover el contenido enconsotre los separadores
+		const cleanedString = this.#response.replace(regex, '');
+
+		return cleanedString.trim();
+	}
+
 	#processResponse = promise => {
 		const metadata = this.#metadata;
 		try {
@@ -54,6 +67,7 @@ export class Stream {
 			value: '',
 			parsed: { value: void 0 },
 		};
+
 		this.#response = undefined;
 		this.#executingPromise = undefined;
 	};
@@ -64,6 +78,7 @@ export class Stream {
 
 	async #handleMetadata(chunk: string, response: string): Promise<string> {
 		this.#metadata.started = true;
+
 		const split = chunk.split(this.#SEPARATORS.METADATA);
 		this.#metadata.value += split[1];
 		return split[0] ? (response += split[0]) : response;
@@ -73,6 +88,7 @@ export class Stream {
 		const splitted = chunk.split(this.#SEPARATORS.START);
 		this.#currentTool.started = true;
 		chunk = '';
+
 		if (splitted[1].includes(this.#SEPARATORS.END)) {
 			const splitted2 = splitted[1].split(this.#SEPARATORS.END);
 			this.#currentTool.value = splitted2[0];
@@ -91,6 +107,7 @@ export class Stream {
 		this.#currentTool.started = false;
 		this.#actions.push(this.#currentTool.value);
 		this.#response += this.#SEPARATORS.START + this.#currentTool.value + this.#SEPARATORS.END;
+
 		return splitted[1];
 	}
 
@@ -100,6 +117,7 @@ export class Stream {
 		const reader = response.body?.getReader();
 		while (true) {
 			const { done, value } = await reader.read();
+
 			let chunk = new TextDecoder().decode(value);
 
 			if (done) return this.#processResponse(promise);
@@ -125,6 +143,7 @@ export class Stream {
 
 			this.#response += chunk;
 			// console.log(44, this.#response);
+
 			this.#parent.triggerEvent('action.received');
 			this.#parent.triggerEvent('stream.response');
 		}

@@ -1,16 +1,16 @@
-#  @aimpact/http-suite
+# @jircdev/http-suite
 
 ## Introduction
 
-`@aimpact/http-suite` is a comprehensive JavaScript package designed to simplify interactions with APIs. The core of
+`@jircdev/http-suite` is a comprehensive JavaScript package designed to simplify interactions with APIs. The core of
 this package is the `Api` object, which provides an easy-to-use interface for making HTTP requests to an API.
 
 ## Installation
 
-To install `@aimpact/http-suite`, run the following command in your project directory:
+To install `@jircdev/http-suite`, run the following command in your project directory:
 
 ```bash
-npm install @aimpact/http-suite
+npm install @jircdev/http-suite
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ npm install @aimpact/http-suite
 Start by importing the `Api` class and creating an instance:
 
 ```javascript
-import { Api } from '@aimpact/http-suite/api';
+import { Api } from '@jircdev/http-suite/api';
 
 const baseUrl = 'https://your-api-url.com';
 const api = new Api(baseUrl);
@@ -36,7 +36,7 @@ api.bearer('your-auth-token');
 
 ### Making Requests
 
-`http-suite` supports various HTTP methods like `GET`, `POST`, `PUT`, `DELETE`, and custom stream methods.
+`@jircdev/http-suite` supports various HTTP methods like `GET`, `POST`, `PUT`, `DELETE`, and custom stream methods.
 
 #### GET Request
 
@@ -84,7 +84,7 @@ Contributions are welcome! Please submit a pull request or an issue on the proje
 
 ## License
 
-`http-suite` is licensed under [MIT License](https://opensource.org/licenses/MIT).
+`@jircdev/http-suite` is licensed under [MIT License](https://opensource.org/licenses/MIT).
 
 ---
 

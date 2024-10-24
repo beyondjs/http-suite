@@ -19,6 +19,10 @@ class Api extends Events {
 	get metadata() {
 		return this.#fetcher.metadata;
 	}
+
+	get stringContent() {
+		return this.#fetcher.stringContent;
+	}
 	constructor(url) {
 		super();
 		this.#url = url;

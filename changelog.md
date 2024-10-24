@@ -35,7 +35,7 @@ management.
 
 ### 1.0.2:
 
-In version 1.0.2 of the @aimpact/http-suite package, two significant modifications have been made to improve
+In version 1.0.2 of the @jircdev/http-suite package, two significant modifications have been made to improve
 functionality and user experience:
 
 1. flexibility in DELETE requests: previously, sending a body ('body') in DELETE requests was mandatory. Now, with the

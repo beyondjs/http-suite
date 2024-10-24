@@ -15,7 +15,7 @@
 	},
 	"libraries": {
 		"imports": [
-			"@aimpact/http-suite"
+			"@jircdev/http-suite"
 		]
 	},
 	"modules": {
