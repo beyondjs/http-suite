@@ -48,6 +48,17 @@ export class Stream {
 		return cleanedString.trim();
 	}
 
+	clean() {
+		this.#metadata = {
+			started: false,
+			value: '',
+			parsed: { value: void 0 },
+		};
+		this.#actions = [];
+		this.#response = '';
+		this.#executingPromise = undefined;
+	}
+
 	#processResponse = promise => {
 		const metadata = this.#metadata;
 		try {

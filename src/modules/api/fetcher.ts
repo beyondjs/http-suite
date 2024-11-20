@@ -144,4 +144,8 @@ export class Fetcher extends ReactiveModel<Fetcher> {
 	put<T = any>(url: string, params: Record<string, any> = {}) {
 		return this.execute<T>(url, 'put', params);
 	}
+
+	clean() {
+		this.streamer.clean();
+	}
 }

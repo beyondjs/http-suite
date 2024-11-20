@@ -35,6 +35,7 @@ class Api extends Events {
 		this.trigger('stream.response');
 	};
 	async action(method = 'get', route: string, specs: object = {}): Promise<any> {
+		this.#fetcher.clean();
 		return this.#fetcher[method](this.getURL(route), specs);
 	}
 
