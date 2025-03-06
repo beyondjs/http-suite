@@ -134,7 +134,10 @@ export class Stream {
 			if (done) return this.#processResponse(promise);
 
 			if (chunk.includes(this.#SEPARATORS.METADATA)) {
-				this.#handleMetadata(chunk, this.#response);
+				const response = await this.#handleMetadata(chunk, this.#response);
+
+				this.#response += response;
+				this.#parent.triggerEvent('stream.response');
 				continue;
 			}
 
