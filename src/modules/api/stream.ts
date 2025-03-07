@@ -92,7 +92,7 @@ export class Stream {
 
 		const split = chunk.split(this.#SEPARATORS.METADATA);
 		this.#metadata.value += split[1];
-		return split[0] ? (response += split[0]) : response;
+		return split[0] ? split[0] : '';
 	}
 
 	handleStart(chunk: string, response: string): string {
@@ -135,7 +135,6 @@ export class Stream {
 
 			if (chunk.includes(this.#SEPARATORS.METADATA)) {
 				const response = await this.#handleMetadata(chunk, this.#response);
-
 				this.#response += response;
 				this.#parent.triggerEvent('stream.response');
 				continue;
