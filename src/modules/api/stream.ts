@@ -89,8 +89,8 @@ export class Stream {
 
 	async #handleMetadata(chunk: string, response: string): Promise<string> {
 		this.#metadata.started = true;
-
 		const split = chunk.split(this.#SEPARATORS.METADATA);
+
 		this.#metadata.value += split[1];
 		return split[0] ? split[0] : '';
 	}
@@ -142,7 +142,9 @@ export class Stream {
 
 			if (this.#metadata.started) {
 				this.#metadata.value += chunk;
+
 				this.#parent.trigger('stream.response');
+				this.#parent.trigger('action.received', this.#metadata.value);
 				continue;
 			}
 

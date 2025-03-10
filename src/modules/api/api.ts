@@ -27,7 +27,7 @@ class Api extends Events {
 		super();
 		this.#url = url;
 		this.#fetcher = new Fetcher();
-		this.#fetcher.on('action.received', () => this.trigger('action.received'));
+		this.#fetcher.on('action.received', specs => this.trigger('action.received', specs));
 		this.#fetcher.on('stream.response', this.#getResponse);
 	}
 
