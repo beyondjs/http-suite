@@ -1,5 +1,5 @@
 {
-	"name": "@aimpact/http-suite",
+	"name": "@beyond-js/http-suite",
 	"version": "0.0.1",
 	"title": "Streamlined Web Communications\"",
 	"description": "Comprehensive package designed for modern web development, offering a unified approach to HTTP communications. It elegantly combines reactive models, streamlined API requests, and efficient data streaming, providing a one-stop solution for all your web communication needs. Whether it's simple API calls or complex data handling, @jircdev/http-suite makes it intuitive and efficient. Perfect for developers aiming to enhance their web projects with reliability and ease.",
