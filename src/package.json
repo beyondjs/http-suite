@@ -1,8 +1,8 @@
 {
 	"name": "@beyond-js/http-suite",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"title": "Streamlined Web Communications\"",
-	"description": "Comprehensive package designed for modern web development, offering a unified approach to HTTP communications. It elegantly combines reactive models, streamlined API requests, and efficient data streaming, providing a one-stop solution for all your web communication needs. Whether it's simple API calls or complex data handling, @jircdev/http-suite makes it intuitive and efficient. Perfect for developers aiming to enhance their web projects with reliability and ease.",
+	"description": "A package built to simplify HTTP requests in modern web projects. It handles everything from basic API calls to data streaming, making it easy to work with web services. Designed to be intuitive and flexible, it helps developers manage web communication without the usual complexity.",
 	"license": "ISC",
 	"template": "template/template.json",
 	"languages": {
@@ -14,6 +14,11 @@
 	},
 	"modules": {
 		"path": "modules"
+	},
+	"author": {
+		"name": "jircdev",
+		"email": "jircdev@gmail.com",
+		"url": "https://github.com/jircdev"
 	},
 	"deployment": {
 		"distributions": [
@@ -41,7 +46,7 @@
 	"dependencies": {
 		"@beyond-js/kernel": "~0.1.9",
 		"@beyond-js/local": "~0.1.3",
-		"@beyond-js/reactive": "^1.1.6",
+		"@beyond-js/reactive": "^2.0.4",
 		"socket.io-client": "^4.5.4",
 		"zod": "^3.24.1"
 	}
