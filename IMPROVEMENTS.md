@@ -12,3 +12,7 @@
     - **Nomenclature Review:** Some variable and method names could be more descriptive to more clearly reflect their
       purpose.
     - **Documentation:** Add comments and documentation to explain complex logic and design decisions.
+
+
+
+"Julio, recuerda que estamos hablando de los colores primarios y sus emociones. ¿Puedes intentar decirme qué te hace sentir el rojo, azul o amarillo? ¿O qué te imaginas cuando ves esos colores en{"status":true,"metadata":{"objectives":[{"name":"Understanding Colors","status":"pending"},{"name":"Artistic Expression","status":"pending"},{"name":"Curiosity Development","status":"pending"}],"credits":{"total":60,"consumed":6}}}"
