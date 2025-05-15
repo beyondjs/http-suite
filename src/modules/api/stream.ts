@@ -129,6 +129,7 @@ export class Stream {
 			// throw new Error('test 2');
 			while (true) {
 				const { done, value } = await reader.read();
+
 				if (done) {
 					this.#processResponse(promise);
 					return;
